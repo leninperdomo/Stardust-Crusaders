@@ -1,2 +1,2 @@
-# Stardust-Crusaders
+# Stardust Crusaders
 Side-scrolling Unity game set in space.
