@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
     public int yRange;
     private GameManager gameManager;
     private Rigidbody spawnRb;
+    private Vector3 torque;
     private bool moveDown;
     private int zigzagYRange;
     
@@ -20,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         transform.position = randomSpawnPos();
         moveDown = false;
         zigzagYRange = Random.Range(0, yRange);
+        torque = new Vector3(Random.Range(-speed, speed), Random.Range(-speed, speed), Random.Range(-speed, speed));
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class SpawnManager : MonoBehaviour
 
         //Add torque to enemies and make spawn powerups zigzag vertically
         if (gameObject.CompareTag("Enemy")) {
-            spawnRb.AddTorque(new Vector3(10, 5, 2));
+            spawnRb.AddTorque(torque);
         } else {
             zigzagVertically();
         }
